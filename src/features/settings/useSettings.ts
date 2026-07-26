@@ -8,10 +8,11 @@ export function useSettings(): AppSettings {
 }
 
 export async function updateSettings(patch: Partial<Omit<AppSettings, 'key'>>) {
+  const updatedAt = new Date().toISOString()
   const existing = await db.settings.get('app-settings')
   if (existing) {
-    await db.settings.update('app-settings', patch)
+    await db.settings.update('app-settings', { ...patch, updatedAt })
   } else {
-    await db.settings.add({ ...DEFAULT_SETTINGS, ...patch })
+    await db.settings.add({ ...DEFAULT_SETTINGS, ...patch, updatedAt })
   }
 }

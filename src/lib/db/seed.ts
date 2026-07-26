@@ -60,6 +60,7 @@ export async function seedDemoData(days = 365) {
         date: dateKey,
         createdAt: createdAt.toISOString(),
         updatedAt: createdAt.toISOString(),
+        isDeleted: false,
       })
     }
   }

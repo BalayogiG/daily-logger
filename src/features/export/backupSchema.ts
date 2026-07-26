@@ -12,6 +12,9 @@ const taskSchema = z.object({
   date: z.string(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  // Optional so backups exported before soft-delete support was added still validate.
+  isDeleted: z.boolean().optional(),
+  deletedAt: z.string().optional(),
 })
 
 const settingsSchema = z.object({
@@ -24,6 +27,8 @@ const settingsSchema = z.object({
   reminderEnabled: z.boolean(),
   reminderTime: z.string(),
   lastViewedYear: z.number(),
+  // Optional so backups exported before this field was added still validate.
+  updatedAt: z.string().optional(),
 })
 
 export const backupSchema = z.object({

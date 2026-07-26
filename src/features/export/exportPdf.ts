@@ -4,7 +4,7 @@ import { db } from '@/lib/db/db'
 import { dateStamp } from '@/lib/download'
 
 export async function exportPdf() {
-  const tasks = await db.tasks.toArray()
+  const tasks = (await db.tasks.toArray()).filter((t) => !t.isDeleted)
   const sorted = [...tasks].sort((a, b) => (a.date < b.date ? 1 : -1))
   const completed = tasks.filter((t) => t.completed).length
   const completionRate = tasks.length ? Math.round((completed / tasks.length) * 100) : 0

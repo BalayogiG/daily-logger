@@ -5,6 +5,7 @@ import { ThresholdSetting } from '@/features/settings/ThresholdSetting'
 import { WeekStartSetting } from '@/features/settings/WeekStartSetting'
 import { ReminderSetting } from '@/features/settings/ReminderSetting'
 import { ExportPanel } from '@/features/export/ExportPanel'
+import { GitHubSyncPanel } from '@/features/sync/GitHubSyncPanel'
 
 export function SettingsView() {
   return (
@@ -22,6 +23,15 @@ export function SettingsView() {
         </CardHeader>
         <CardContent>
           <ReminderSetting />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-sm">Sync across devices</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <GitHubSyncPanel />
         </CardContent>
       </Card>
 

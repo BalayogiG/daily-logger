@@ -8,7 +8,7 @@ function nowIso() {
 }
 
 async function checkMilestone() {
-  const tasks = await db.tasks.toArray()
+  const tasks = (await db.tasks.toArray()).filter((t) => !t.isDeleted)
   const streak = computeCurrentStreak(getActiveDateSet(tasks))
   const milestone = getCrossedMilestone(streak)
   if (milestone) {
@@ -30,6 +30,7 @@ export async function addTask(values: TaskFormValues) {
     date: values.date,
     createdAt: timestamp,
     updatedAt: timestamp,
+    isDeleted: false,
   })
   if (values.completed) await checkMilestone()
 }
@@ -50,7 +51,8 @@ export async function updateTask(id: string, values: TaskFormValues) {
 }
 
 export async function deleteTask(id: string) {
-  await db.tasks.delete(id)
+  const timestamp = nowIso()
+  await db.tasks.update(id, { isDeleted: true, deletedAt: timestamp, updatedAt: timestamp })
 }
 
 export async function toggleTaskCompleted(id: string) {

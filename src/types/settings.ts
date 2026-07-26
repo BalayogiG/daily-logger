@@ -18,6 +18,7 @@ export interface AppSettings {
   reminderEnabled: boolean
   reminderTime: string // 'HH:mm'
   lastViewedYear: number
+  updatedAt: string
 }
 
 export const DEFAULT_INTENSITY_THRESHOLDS: IntensityThresholds = [1, 2, 4, 7]
@@ -48,4 +49,5 @@ export const DEFAULT_SETTINGS: AppSettings = {
   reminderEnabled: false,
   reminderTime: '20:00',
   lastViewedYear: new Date().getFullYear(),
+  updatedAt: new Date().toISOString(),
 }

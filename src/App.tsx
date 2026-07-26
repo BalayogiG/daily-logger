@@ -12,6 +12,7 @@ import { FilterPanel } from '@/features/search/FilterPanel'
 import { useUiStore } from '@/store/uiStore'
 import { useTheme } from '@/lib/theme/useTheme'
 import { useReminderScheduler } from '@/lib/notifications/useReminderScheduler'
+import { useSyncTriggers } from '@/features/sync/useSyncTriggers'
 
 // Calendar is the default view and stays eager; the rest lazy-load on first visit
 // so Recharts (Statistics) and jsPDF-adjacent code never ship in the initial bundle.
@@ -33,6 +34,7 @@ function ViewFallback() {
 function App() {
   const { resolvedTheme } = useTheme()
   useReminderScheduler()
+  useSyncTriggers()
   const activeView = useUiStore((s) => s.activeView)
   const ActiveComponent = VIEWS[activeView]
 

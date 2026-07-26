@@ -3,7 +3,7 @@ import { db } from '@/lib/db/db'
 import { downloadBlob, dateStamp } from '@/lib/download'
 
 export async function exportCsv() {
-  const tasks = await db.tasks.toArray()
+  const tasks = (await db.tasks.toArray()).filter((t) => !t.isDeleted)
   const rows = tasks
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     .map((t) => ({

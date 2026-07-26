@@ -13,6 +13,9 @@ export interface Task {
   date: string
   createdAt: string
   updatedAt: string
+  /** Soft-delete tombstone — hard delete only happens via the periodic purge, so sync can propagate the deletion. */
+  isDeleted: boolean
+  deletedAt?: string
 }
 
-export type TaskInput = Omit<Task, 'id' | 'createdAt' | 'updatedAt'>
+export type TaskInput = Omit<Task, 'id' | 'createdAt' | 'updatedAt' | 'isDeleted' | 'deletedAt'>

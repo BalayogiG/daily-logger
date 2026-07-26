@@ -60,10 +60,10 @@ function computeSummary(tasks: Task[], weekStartsOn: 0 | 1): StatsSummary {
 
 export function useStats(): StatsSummary {
   const settings = useSettings()
-  const tasks = useLiveQuery(() => db.tasks.toArray(), []) ?? []
+  const tasks = useAllTasks()
   return computeSummary(tasks, settings.weekStartsOn)
 }
 
 export function useAllTasks(): Task[] {
-  return useLiveQuery(() => db.tasks.toArray(), []) ?? []
+  return useLiveQuery(() => db.tasks.filter((t) => !t.isDeleted).toArray(), []) ?? []
 }

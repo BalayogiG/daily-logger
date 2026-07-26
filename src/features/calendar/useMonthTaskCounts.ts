@@ -16,6 +16,7 @@ export function useMonthTaskCounts(year: number, month: number): DayCountMap {
 
     const result: DayCountMap = new Map()
     for (const task of tasks) {
+      if (task.isDeleted) continue
       const entry = result.get(task.date) ?? { date: task.date, total: 0, completed: 0 }
       entry.total += 1
       if (task.completed) entry.completed += 1
