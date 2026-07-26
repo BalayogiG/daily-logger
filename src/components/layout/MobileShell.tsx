@@ -17,9 +17,15 @@ export function MobileShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-svh flex-col bg-background text-foreground">
       <header
-        className="sticky top-0 z-30 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-sm supports-backdrop-filter:bg-background/80"
-        style={{ paddingTop: 'calc(0.75rem + env(safe-area-inset-top))' }}
+        className="sticky top-0 z-30 border-b border-border bg-background/95 px-4 py-2.5 backdrop-blur-sm supports-backdrop-filter:bg-background/80"
+        style={{ paddingTop: 'calc(0.625rem + env(safe-area-inset-top))' }}
       >
+        <div className="mb-1 flex items-center gap-1.5">
+          <span className="flex size-5 items-center justify-center rounded-md bg-primary text-[10px] font-bold text-primary-foreground">
+            DL
+          </span>
+          <span className="text-xs font-medium text-muted-foreground">Daily Logger</span>
+        </div>
         <h1 className="font-heading text-lg font-semibold">{TITLES[activeView]}</h1>
       </header>
 

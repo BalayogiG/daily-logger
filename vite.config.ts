@@ -4,9 +4,9 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// Served from https://<user>.github.io/Daily-logger/ in production (GitHub Pages project site);
+// Served from https://<user>.github.io/daily-logger/ in production (GitHub Pages project site);
 // stays at root for local dev so `npm run dev` URLs are unaffected.
-const base = process.env.GITHUB_ACTIONS ? '/Daily-logger/' : '/'
+const base = process.env.GITHUB_ACTIONS ? '/daily-logger/' : '/'
 
 // https://vite.dev/config/
 export default defineConfig({
