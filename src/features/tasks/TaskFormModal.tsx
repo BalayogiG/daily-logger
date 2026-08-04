@@ -16,14 +16,17 @@ export function TaskFormModal() {
     [editingTaskId],
   )
 
+  const isReady = mode === 'add' || !!existingTask
+
   return (
     <ResponsiveModal
       open={isOpen}
       onOpenChange={(open) => !open && closeTaskForm()}
       title={mode === 'edit' ? 'Edit task' : 'Add task'}
     >
-      {isOpen && (
+      {isOpen && isReady && (
         <TaskForm
+          key={mode === 'edit' ? existingTask?.id : 'add'}
           mode={mode}
           date={selectedDate}
           existingTask={mode === 'edit' ? existingTask : undefined}
