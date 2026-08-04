@@ -19,7 +19,7 @@ function DayCellImpl({ day, completedCount, totalCount, color, isSelected, onSel
     return (
       <div
         aria-hidden
-        className="flex aspect-square min-h-11 items-start justify-start rounded-lg p-1.5 text-xs text-muted-foreground/30"
+        className="flex aspect-square min-h-11 items-start justify-start rounded-lg p-1.5 text-xs text-muted-foreground/30 sm:items-center sm:justify-center"
       >
         {dayNumber}
       </div>
@@ -43,7 +43,7 @@ function DayCellImpl({ day, completedCount, totalCount, color, isSelected, onSel
       transition={{ duration: 0.25 }}
       whileTap={disabled ? undefined : { scale: 0.96 }}
       className={cn(
-        'relative flex aspect-square min-h-11 flex-col items-start justify-start rounded-lg p-1.5 text-left text-xs font-medium transition-colors',
+        'relative flex aspect-square min-h-11 flex-col items-start justify-start rounded-lg p-1.5 text-left text-xs font-medium transition-colors sm:items-center sm:justify-center sm:text-center',
         disabled ? 'cursor-not-allowed opacity-40' : 'cursor-pointer',
         day.isToday && 'ring-2 ring-offset-1 ring-offset-background ring-primary',
         isSelected && !day.isToday && 'ring-2 ring-offset-1 ring-offset-background ring-foreground/40',
