@@ -18,7 +18,7 @@ export function MonthGrid({ year, month }: { year: number; month: number }) {
   const colors = resolvedTheme === 'dark' ? settings.intensityColorsDark : settings.intensityColorsLight
 
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="mx-auto flex w-full max-w-[85%] flex-col gap-1.5">
       <WeekdayHeader labels={weekdayLabels} />
       <div className="flex flex-col gap-1.5">
         {weeks.map((week, weekIndex) => (
